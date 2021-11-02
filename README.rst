@@ -31,14 +31,18 @@ Generate a Python package project::
 About the package ``requirements``:
 
 * Install the requirements in your local machine by running::
-    make requirements or
+    
+    make requirements
+
+* Install the requirements for Dev in your local machine by running::
+    
     make requirements-dev
 
 * Requirements for Prod build can be found in ``requirements/prod.txt``
 
 * Requirements for Dev build can be found in ``requirements/dev.txt``
 
-* Prod requirements are reused in both Dev and Test requirements.
+* Prod requirements are reused in Dev requirements.
 
 Then (this is a copypasta, we probably will need a different way to release this package internally):
 
