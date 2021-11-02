@@ -26,21 +26,21 @@ Usage
 
 Generate a Python package project::
 
-    cookiecutter https://github.com/ardydedase/cookiecutter-pypackage.git
+    cookiecutter git@github.com:xingyaoc/cookiecutter-pypackage.git
 
 About the package ``requirements``:
 
-* Install the dev requirements in your local machine by running::
-    
-    pip install -r requirements/dev.txt
-
-* Requirements for Unit testing (on Travis) can be found in ``requirements/test.txt``
+* Install the requirements in your local machine by running::
+    make requirements or
+    make requirements-dev
 
 * Requirements for Prod build can be found in ``requirements/prod.txt``
 
+* Requirements for Dev build can be found in ``requirements/dev.txt``
+
 * Prod requirements are reused in both Dev and Test requirements.
 
-Then:
+Then (this is a copypasta, we probably will need a different way to release this package internally):
 
 * Create a repo and put it there.
 * Add the repo to your Travis CI account.
