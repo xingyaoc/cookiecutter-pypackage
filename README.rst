@@ -28,6 +28,28 @@ Generate a Python package project::
 
     cookiecutter git@github.com:xingyaoc/cookiecutter-pypackage.git
 
+To activate your virtual environment automatically on ``cd``, put this into your ``.bashrc``::
+
+
+	function cd() {
+		builtin cd "$@"
+
+		if [[ -z "$VIRTUAL_ENV" ]] ; then
+		## If env folder is found then activate the vitualenv
+		   if [[ -d ./venv ]] ; then
+			  source ./venv/bin/activate
+		   fi
+		else
+		## check the current folder belong to earlier VIRTUAL_ENV folder
+		# if yes then do nothing
+		# else deactivate
+		parentdir="$(dirname "$VIRTUAL_ENV")"
+		   if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+			  deactivate
+		   fi
+		fi
+	}
+
 About the package ``requirements``:
 
 * Install the requirements in your local machine by running::
