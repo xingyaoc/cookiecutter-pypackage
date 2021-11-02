@@ -30,6 +30,7 @@ clean: clean-build clean-pyc clean-test
 clean-build:
 	rm -fr build/
 	rm -fr dist/
+	rm -fr venv/
 	rm -fr .eggs/
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -f {} +
@@ -82,3 +83,6 @@ dist: clean
 
 install: clean
 	python setup.py install
+
+requirements: requirements.txt requirements/prod.txt requirements/dev.txt
+	pip install -r requirements.txt
