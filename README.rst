@@ -6,20 +6,10 @@ cookiecutter-pypackage
    :target: https://travis-ci.org/ardydedase/cookiecutter-pypackage
 
 
-This was forked from: https://github.com/audreyr/cookiecutter-pypackage. Here are the differences of this forked version:
+This was forked from: https://github.com/ardydedase/cookiecutter-pypackage. Here are the differences of this forked version:
 
-* Required packages are not hardcoded in the ``setup.py`` file. All the required packages are inside the ``requirements`` folder.
-
-* Package requirements are broken down into separate files::
-
-.. code:: bash
-
-    ├── requirements
-    │   ├── dev.txt
-    │   ├── prod.txt
-    │   ├── test.txt
-
-* Creates a default class based on the package name.
+* includes a virtual environment where python packages get installed
+* target for make requirements
 
 Cookiecutter template for a Python package. See https://github.com/audreyr/cookiecutter.
 
@@ -96,10 +86,6 @@ be a fork.
 
 Or Submit a Pull Request
 ~~~~~~~~~~~~~~~~~~~~~~~~
-
-I also accept pull requests on this, if they're small, atomic, and if they
-make my own packaging experience better.
-
 
 .. _Travis-CI: http://travis-ci.org/
 .. _Tox: http://testrun.org/tox/
