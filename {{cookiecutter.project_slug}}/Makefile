@@ -84,5 +84,11 @@ dist: clean
 install: clean
 	python setup.py install
 
-requirements: requirements.txt requirements/prod.txt requirements/dev.txt
+venv:
+	python3 -m venv venv
+
+requirements: venv equirements.txt requirements/prod.txt 
 	pip install -r requirements.txt
+
+requirements-dev: requirements requirements/prod.txt requirements/dev.txt 
+	pip install -r requirements/dev.txt
