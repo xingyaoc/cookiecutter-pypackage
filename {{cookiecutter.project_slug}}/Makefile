@@ -1,4 +1,4 @@
-.PHONY: clean-pyc clean-build docs clean
+.PHONY: clean-pyc clean-build docs clean activate-venv
 define BROWSER_PYSCRIPT
 import os, webbrowser, sys
 try:
@@ -83,8 +83,10 @@ dist: clean
 install: clean
 	python setup.py install
 
+venv:
+	python3 -m venv venv
 
-requirements: equirements.txt requirements/prod.txt 
+requirements: requirements.txt requirements/prod.txt 
 	pip install -r requirements.txt
 
 requirements-dev: requirements requirements/prod.txt requirements/dev.txt 
