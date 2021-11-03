@@ -49,6 +49,22 @@ To activate your virtual environment automatically on ``cd``, put this into your
 		   fi
 		fi
 	}
+	
+	function activate() {
+	  if [[ -z "$VIRTUAL_ENV" ]] ; then
+	    ## If env folder is found then activate the vitualenv
+	      if [[ -d ./venv ]] ; then
+		source ./venv/bin/activate
+	      fi
+	  fi
+	}
+
+To build the package, first set up and activate your virtual environment by running::
+
+	make venv && activate
+
+or just run ``make venv`` and ``cd`` out and back into you repo.
+
 
 About the package ``requirements``:
 
