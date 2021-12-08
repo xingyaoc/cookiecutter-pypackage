@@ -86,8 +86,8 @@ install: clean
 venv:
 	python3 -m venv venv
 
-requirements: requirements.txt requirements/prod.txt 
-	pip install -r requirements.txt
+requirements: requirements/prod.txt 
+	pip install -r requirements/prod.txt
 
 requirements-dev: requirements requirements/prod.txt requirements/dev.txt 
 	pip install -r requirements/dev.txt
