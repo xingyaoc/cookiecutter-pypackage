@@ -28,6 +28,8 @@ help:
 clean: clean-build clean-pyc clean-test
 
 clean-build:
+	rm -fr python
+	rm -fr *.zip
 	rm -fr build/
 	rm -fr dist/
 	rm -fr .eggs/
@@ -46,7 +48,7 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 {{ cookiecutter.project_slug }} tests
+	flake8 brcf3d_ml tests
 
 test:
 	python setup.py test
@@ -55,15 +57,15 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source {{ cookiecutter.project_slug }} setup.py test
+	coverage run --source brcf3d_ml setup.py test
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs:
-	rm -f docs/{{ cookiecutter.project_slug }}.rst
+	rm -f docs/brcf3d_ml.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ {{ cookiecutter.project_slug }}
+	sphinx-apidoc -o docs/ brcf3d_ml
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
@@ -83,11 +85,34 @@ dist: clean
 install: clean
 	python setup.py install
 
+dataflow-venv:
+	python3.6 -m venv dataflow_venv
+
 venv:
 	python3 -m venv venv
 
-requirements: requirements/prod.txt 
+requirements: requirements.txt requirements/prod.txt
+	pip install --upgrade pip
+	pip install wheel
 	pip install -r requirements/prod.txt
 
-requirements-dev: requirements requirements/prod.txt requirements/dev.txt 
+requirements-dev: requirements requirements/prod.txt requirements/dev.txt
+	pip install --upgrade pip
+	pip install wheel
 	pip install -r requirements/dev.txt
+
+requirements-dataflow: dataflow_venv requirements/dataflow.txt
+	dataflow_venv/bin/pip install --upgrade pip
+	dataflow_venv/bin/pip install wheel
+	dataflow_venv/bin/pip install -r requirements/dataflow.txt
+
+dataflow-archive: requirements/dataflow.txt dataflow-venv requirements-dataflow
+	mkdir python
+	cp -r dataflow_venv/lib python/lib
+	cp -r dataflow_venv/bin python/bin
+	rm -fr python/bin/pip*
+	rm -fr python/bin/python*
+	rm -fr python/bin/activate*
+	cp -r /opt/dataflow/java java
+	zip -r archive.zip python java
+	rm -rf python java
