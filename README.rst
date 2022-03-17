@@ -26,7 +26,7 @@ Usage
 
 Generate a Python package project::
 
-    cookiecutter git@github.com:xingyaoc/cookiecutter-pypackage.git
+    cookiecutter git@github.com:eitm-org/cookiecutter-pypackage.git
 
 To activate your virtual environment automatically on ``cd``, put this into your ``.bashrc``::
 
