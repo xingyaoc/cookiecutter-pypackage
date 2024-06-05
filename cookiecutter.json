@@ -1,13 +1,13 @@
 {
-	"full_name": "Xingyao Chen",
-	"email": "xchen@eitm.org",
-	"github_username": "xingyaoc",
+	"full_name": "Your Name",
+	"email": "user@eit.org",
+	"github_username": "user",
 	"project_name": "Python Boilerplate",
 	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
 	"project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
-	"release_date": "2021-12-12",
+	"release_date": "YYYY-MM-DD",
 	"pypi_username": "{{ cookiecutter.github_username }}",
-	"year": "2021",
-	"version": "0.1.0",
+	"year": "YYYY",
+	"version": "X.Y.Z",
 	"use_pypi_deployment_with_travis": "y"
 }
